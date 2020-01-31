@@ -1,7 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ChangeDetectorRef } from '@angular/core';
 import { AngularFireDatabase } from '@angular/fire/database';
 import { Message } from '../../_models/message';
-import { BehaviorSubject } from 'rxjs';
+
 
 @Component({
   selector: 'app-demo9',
@@ -10,17 +10,32 @@ import { BehaviorSubject } from 'rxjs';
 })
 export class Demo9Component implements OnInit {
 
-  messages: BehaviorSubject<Message[]>;
+  message: string;
+  context: Message[];
+
   constructor(
-    private FDatabase: AngularFireDatabase
+    private FDatabase: AngularFireDatabase,
+    private changeDetectorRef: ChangeDetectorRef
   ) { }
 
   ngOnInit() {
-    this.messages = new BehaviorSubject<Message[]>([]);
+    
     this.FDatabase.database.ref('Messages').on('value', (snapshot) => {
-      let array = snapshot.val().forEach(x => x.val());
-      this.messages.next(array);
+      this.context =[];
+      for(let key in snapshot.val())
+      {
+        this.context.push(snapshot.val()[key]);
+      };
+      this.changeDetectorRef.detectChanges();
     });
   }
 
+  send(e) {
+    this.FDatabase.database.ref('Messages').push({ 
+      auteur: 'Alex',
+      contenu: e.message,
+      date: new Date(),
+    });
+    this.message = null;
+  }
 }

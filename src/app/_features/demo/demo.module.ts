@@ -5,7 +5,7 @@ import { DemoRoutingModule } from './demo-routing.module';
 import { DemoComponent } from './demo.component';
 import { Demo1Component } from './_components/demo1/demo1.component';
 import { Demo2Component } from './_components/demo2/demo2.component';
-import { NbButtonModule, NbIconModule, NbCardModule, NbInputModule, NbDatepicker, NbDatepickerModule, NbToggleModule } from '@nebular/theme';
+import { NbButtonModule, NbIconModule, NbCardModule, NbInputModule, NbDatepicker, NbDatepickerModule, NbToggleModule, NbChatModule } from '@nebular/theme';
 import { Demo3Component } from './_components/demo3/demo3.component';
 import { Demo4Component } from './_components/demo4/demo4.component';
 import { Demo5Component } from './_components/demo5/demo5.component';
@@ -34,7 +34,8 @@ import { environment } from 'src/environments/environment';
     NbDatepickerModule,
     NbToggleModule,
     AngularFireModule.initializeApp(environment.firebase),
-    AngularFireDatabaseModule
+    AngularFireDatabaseModule,
+    NbChatModule
   ]
 })
 export class DemoModule { 

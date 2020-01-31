@@ -3,7 +3,7 @@ import { NgModule } from '@angular/core';
 
 import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { NbThemeModule, NbLayoutModule, NbButtonModule, NbSidebarModule, NbMenuModule, NbIconModule, NbCardModule, NbDialogService, NbDialogModule, NbDatepickerModule } from '@nebular/theme';
+import { NbThemeModule, NbLayoutModule, NbButtonModule, NbSidebarModule, NbMenuModule, NbIconModule, NbCardModule, NbDialogService, NbDialogModule, NbDatepickerModule, NbChatModule } from '@nebular/theme';
 import { NbEvaIconsModule } from '@nebular/eva-icons';
 import { AppRoutingModule } from './app-routing.module';
 import { NavComponent } from './_components/nav/nav.component';
@@ -32,7 +32,8 @@ import { HttpClientModule } from '@angular/common/http';
     AppRoutingModule,
     NbDialogModule.forRoot(),
     HttpClientModule,
-    NbDatepickerModule.forRoot()
+    NbDatepickerModule.forRoot(),
+    NbChatModule.forRoot(),
   ],
   providers: [ ],
   bootstrap: [AppComponent],

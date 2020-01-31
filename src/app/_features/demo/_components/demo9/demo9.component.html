@@ -1,13 +1,25 @@
-<div style="display: flex;">
+<!-- <div style="display: flex;">
     <div style="width:50%">
-        <textarea></textarea>
-        <button>Envoyer</button>
+        <textarea [(ngModel)]="message"></textarea>
+        <button (click)="send()">Envoyer</button>
     </div>
     <div style="width:50%">
         <ul>
-            <li *ngFor="let m of messages">
+            <li *ngFor="let m of context">
                 {{ m.auteur }} {{m.contenu}}
             </li>
         </ul>
     </div>
-</div>
+</div> -->
+
+
+<nb-chat title="Nebular Chat" style="max-height: 700px;">
+    <nb-chat-message *ngFor="let msg of context"
+                     [message]="msg.contenu"
+                     [sender]="msg.auteur"
+                     [date]="msg.date">
+</nb-chat-message>
+
+<nb-chat-form (send)="send($event)" [dropFiles]="true">
+</nb-chat-form>
+</nb-chat>
